@@ -3,13 +3,14 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-with open ("resume.txt", "r") as file:
+with open ("bad_resume.txt", "r") as file:
     resume_text = file.read().lower()
 
 doc = nlp(resume_text)
 
 # ACTION VERB DETECTION ------------------------------------
 action_verbs = []
+
 
 for token in doc:
     if token.pos_ == "VERB":
@@ -92,7 +93,7 @@ print("-----------------------------------------------------------------------")
 # END OF OVERUSED WORD DETECTION ---------------------------------------
 
 # LENGTH CHECK ---------------------------------------------------------
-with open ("resume.txt", "r") as file:
+with open ("bad_resume.txt", "r") as file:
     words = file.read().split()
 
 words_count = len(words)
@@ -115,7 +116,7 @@ print("-----------------------------------------------------------------------")
 # BULLET POINT CHECK ----------------------------------------------------
 import re
 
-with open ("resume.txt", "r") as file:
+with open ("bad_resume.txt", "r") as file:
     lines = file.read().split("\n")
 
 bullet_pattern = r"^[\s]*([•·⊛◉○◌\-*o])\s+"
@@ -366,9 +367,9 @@ score += len(numbers) * 3   # weight numbers heavier
 print("Quantification Strength Results:")
 print("-----------------------------------------------------------------------")
 
-if score >= 30:
+if score >= 40:
     print("Good job on quantifying! Your score is", score)
-elif score >= 15:
+elif score >= 25:
     print("Consider quantifying more. Your score is", score)
 else:
     print("Quantification strength weak! Your score is", score)
