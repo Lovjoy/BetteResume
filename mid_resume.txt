@@ -1,17 +1,28 @@
+<<<<<<< HEAD
 **Jordan Patel**
 (555) 987-1122
 [jordan.patel@email.com](mailto:jordan.patel@email.com)
+=======
+Jordan Patel
+(555) 987-1122
+jordan.patel@email.com
+>>>>>>> 73e0961c992c03362b1b4545bb2d66dcdc0e905b
 Lansing, MI
 github.com/jpatel
 
 ---
 
+<<<<<<< HEAD
 ## Summary
 
+=======
+Summary
+>>>>>>> 73e0961c992c03362b1b4545bb2d66dcdc0e905b
 Computer Science graduate seeking an entry-level software development role. Experience with programming coursework, small academic projects, and collaborative assignments. Interested in backend development and improving practical coding skills in a professional environment.
 
 ---
 
+<<<<<<< HEAD
 ## Technical Skills
 
 **Languages:** Java, Python, C++
@@ -25,19 +36,41 @@ Computer Science graduate seeking an entry-level software development role. Expe
 ## Projects
 
 **Student Course Registration System (Java)**
+=======
+Technical Skills
+Languages: Java, Python, C++
+Web: HTML, CSS, basic JavaScript
+Tools: Git, VS Code, Eclipse
+Databases: MySQL (introductory level)
+Other: Object-oriented programming, basic data structures
+
+---
+
+Projects
+Student Course Registration System (Java)
+>>>>>>> 73e0961c992c03362b1b4545bb2d66dcdc0e905b
 • Developed a console-based application allowing users to add, drop, and view courses.
 • Implemented basic object-oriented design principles.
 • Stored course data using simple file I/O.
 
+<<<<<<< HEAD
 **Personal Portfolio Website**
+=======
+Personal Portfolio Website
+>>>>>>> 73e0961c992c03362b1b4545bb2d66dcdc0e905b
 • Designed a multi-page website using HTML and CSS.
 • Deployed using GitHub Pages.
 
 ---
 
+<<<<<<< HEAD
 ## Experience
 
 **Technology Support Assistant**
+=======
+Experience
+Technology Support Assistant
+>>>>>>> 73e0961c992c03362b1b4545bb2d66dcdc0e905b
 University IT Department
 2023 – 2024
 
@@ -47,15 +80,23 @@ University IT Department
 
 ---
 
+<<<<<<< HEAD
 ## Education
 
+=======
+Education
+>>>>>>> 73e0961c992c03362b1b4545bb2d66dcdc0e905b
 Bachelor of Science in Computer Science
 Michigan State University
 2024
 
 ---
 
+<<<<<<< HEAD
 ## Activities
 
+=======
+Activities
+>>>>>>> 73e0961c992c03362b1b4545bb2d66dcdc0e905b
 • Member, Programming Club
 • Participated in one campus hackathon
