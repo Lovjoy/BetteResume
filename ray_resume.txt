@@ -1,0 +1,41 @@
+Rachael Hobbs
+Sanford, Michigan 	         (512) 831-1690 	              hobbsmath@gmail.com 	      linkedin.com/in/ray-hobbs  
+Education
+B.S. DATA SCIENCE 									       PROJECTED MAY 2026
+Central Michigan University | Mt. Pleasant, MI								              GPA 4.0         
+B.S. MATHEMATICS 										       DEC 2015
+University of Texas | Austin, TX									              GPA 3.8
+Experience
+SYLVAN LEARNING | Midland, MI 							            DEC 2019-AUG 2024
+MATHEMATICS TUTOR
+o	Illustrated complex mathematical concepts into simpler, understandable terms for diverse learning, improving student comprehension.
+o	Developed customized instructional materials for daily lessons including physical models and evaluations.
+o	Analyzed student performance data to identify knowledge gaps and personalize instructional strategies, leading to measurable progress for 30 students.
+LEANDER ISD | Leander, TX							           NOV 2016-OCT 2017
+MATHEMATICS TEACHER
+o	Designed and implemented high school math curriculum, following state standards into inquiry-based learning lessons and projects.
+o	Utilized educational technologies (Kahoot, Desmos) to increase student engagement and provide real-time feedback on learning outcomes. 
+o	Maintained consistent communication with parents, fostering collaborative efforts to address individual student needs and achievements for over 200 students.
+COMPUTERSHARE & BNY MELLON | College Station, TX			            NOV 2009-JUN 2013
+ASSISTANT TEAM LEAD
+o	Co-led a team of 35 agents, handling aspects of training and feedback to improve customer service.
+o	Resolved escalated customer issues by applying critical thinking and communication skills to deliver solutions.
+Projects 											      github.com/Lovjoy      
+FEMA NATIONAL FLOOD INSURANCE POLICIES IN PYTHON				    NOVEMBER 2025
+o Processed and cleaned a large FEMA NFIP dataset, addressing substantial missing values, removing duplicates, standardizing inconsistent flood-zone codes, and engineering a binary high-risk vs low-risk flood-zone feature.
+o Conducted EDA of policy counts, premium changes by zone and state, and high-risk trends over time.
+o Engineered a premium-rate variable and applied a paired t-test comparing Michigan and Florida premium levels within the same broad flood-zone categories.
+o Produced visualizations of geographic and temporal trends using Pandas, NumPy, Matplotlib, and Seaborn; managed the workflow in VS Code with version control through GitHub.
+BREAST CANCER DIAGNOSTIC CLASSIFICATION IN R					    NOVEMBER 2025
+o Built Logistic Regression, Naïve Bayes, LDA/QDA, KNN, and Decision Tree models; evaluated sensitivity, specificity, AUC, and confusion-matrix performance.
+o Tuned probability cutoffs based on confusion-matrix performance to reduce malignant misclassification risk.
+o Applied PCA, K-means, and hierarchical clustering to examine data structure and alignment with diagnoses.
+o Identified Naïve Bayes as the most clinically safe model (zero false negatives at tuned cutoffs) and KNN as the strongest performer by F1 score.
+Skills & Abilities 
+Programing Languages: R, Python, SAS, SQL, Java
+Tools: VS Code, Jupiter Notebook, R Markdown, Quarto, GIT, GitHub, Microsoft Office, SPSS, Jira
+Python Libraries: Pandas, Numpy, Matplotlib, Scikit-Learn, Seaborn, TensorFlow, Keras, Kaggle, Regex
+R Libraries: ggplot2, tidyverse, dplyr, rpart, caret, cluster, MASS, stringr, randomForest, ROSE, rsample, nnet
+Data Science: Machine Learning, Data Visualization, Linear Algebra, Calculus, Statistics, Differential Equations
+Soft Skills: Problem-Solving, Communication, Collaboration, Attention to Detail, Time Management
+

@@ -2,7 +2,7 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-with open ("resume.txt", "r") as file:
+with open ("ray_resume.txt", "r") as file:
     resume_text = file.read().lower()
 
 doc = nlp(resume_text)
@@ -32,5 +32,5 @@ elif total_action_verbs>=8 :
 else:
     print("Buzzword score: Weak")
 
-
+# add a buffer since it catches extra word
 

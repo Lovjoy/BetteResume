@@ -1,4 +1,4 @@
-with open ("resume.txt", "r") as file:
+with open ("ray_resume.txt", "r") as file:
     resume_text = file.read().lower()
 
 structure = [

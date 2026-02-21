@@ -1,4 +1,5 @@
-with open ("resume.txt", "r") as file:
+# needs to be fixed
+with open ("ray_resume.txt", "r") as file:
     lines = file.read().split("\n")
 
 bullet_points = ["•", "•", "·", "⊛", "◉", "◉", "○", "◌", "-", "*"]

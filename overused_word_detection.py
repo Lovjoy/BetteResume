@@ -3,7 +3,7 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-with open ("resume.txt", "r") as file:
+with open ("ray_resume.txt", "r") as file:
     resume_text = file.read()
 
 doc = nlp(resume_text)

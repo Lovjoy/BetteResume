@@ -1,7 +1,7 @@
 #unfinished
 import re
 
-with open ("resume.txt", "r") as file:
+with open ("ray_resume.txt", "r") as file:
     resume_text = file.read()
 
 numbers = re.findall(r"\d+", resume_text)
