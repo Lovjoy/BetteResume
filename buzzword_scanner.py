@@ -109,9 +109,9 @@ previous_positions = [
     "Associate System Engineer Intern"
 ]
 
-buzzwords = [skills, job_skills, responsibilities, majors, previous_positions]
+buzzwords = skills + job_skills + responsibilities + majors + previous_positions
 
-buzzwords = buzzwords.lower()
+buzzwords = [word.lower() for word in buzzwords]
 
 buzzwords_results = {}
 
@@ -124,8 +124,10 @@ total_buzzwords = sum(buzzwords_results.values())
 print("Buzzword Scan Results")
 print("----------------------")
 
+'''
 for buzzword_word, buzzwords_count in buzzwords_results.items():
     print(f"{buzzword_word}: {buzzwords_count}")
+'''
 
 print("-----------------")
 print(f"Total Buzzwords found: {total_buzzwords}")

@@ -1,17 +1,19 @@
+#unfinished
 import re
 
 with open ("resume.txt", "r") as file:
     resume_text = file.read()
 
 numbers = re.findall(r"\d+", resume_text)
+score = 0
 
-signals = {'$', '%', '+', '#', (any(char.isdigit() for char in resume_text)), "minutes", "hours", "days", "weeks", "months", "years", numbers, 
+signals = {'$', '%', '+', '#', "minutes", "hours", "days", "weeks", "months", "years", 
            "increased", "reduced", "decreased", "improved", "grew", "boosted", "cut", "saved", "generated", "achieved", "delivered", "optimized",
            "expanded", "scaled", "accelerated", "percent", "clients", "customers", "users", "employees", "team", "teams", "projects", "revenus",
            "sales", "profit", "budget", "cost", "time"}
 
 for signals_kinds in signals:
-    if signals_kinds in resume_text:
+    if signals_kinds or numbers in resume_text:
         score += 2
 
 print("Quantification Strength Results:")

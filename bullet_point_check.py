@@ -1,29 +1,27 @@
 with open ("resume.txt", "r") as file:
     lines = file.read().split("\n")
 
-bullet_points = ["•", "·", "⊛", "◉", "◉", "○", "◌", "-", "*"]
+bullet_points = ["•", "•", "·", "⊛", "◉", "◉", "○", "◌", "-", "*"]
 
 bullet_points_results = {}
-
-for bullet_points_kind in bullet_points:
-    bullet_points_count = lines.count(bullet_points_kind)
-    bullet_points_results[bullet_points_kind] = bullet_points_count
-
-total_bullet_points = sum(bullet_points_results.values())
-
 bullet_lengths = []
 
 for line in lines:
     line = line.strip()
 
-    if line.startswith(bullet_points):
+    if line.startswith(tuple(bullet_points)):
+
+        bullet_symbol = line[0]
+        bullet_points_results[bullet_symbol] = bullet_points_results.get(bullet_symbol, 0) + 1
+
         clean_line = line[1:].strip()
-        words = clean_line.split()
-        word_count = len(words)
+        word_count = len(clean_line.split())
         bullet_lengths.append(word_count)
 
+total_bullet_points = sum(bullet_points_results.values())
+
 if len(bullet_lengths) > 0:
-    average_lentgth = sum(bullet_lengths) / len(bullet_lengths)
+    average_length = sum(bullet_lengths) / len(bullet_lengths)
 else:
     average_length = 0
 
@@ -40,7 +38,7 @@ print(f"Total Bullet Points found: {total_bullet_points}")
 if total_bullet_points >= 18:
     print("Too many bullet points, lessen them")
 elif total_bullet_points>= 12:
-    print("Buzzword score: Optimal number of bullet points")
+    print("Optimal number of bullet points")
 else:
     print("Not enough bullet points")
 

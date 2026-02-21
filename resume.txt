@@ -5,12 +5,12 @@ Central Michigan University, Mount Pleasant, MI Anticipated Graduation: May 2028
 Bachelor of Science in Computer Science
 GPA: 3.7
 RELEVANT COURSEWORK
-• CPS 180: Principles of Computer Programming
-• CPS 181: Introduction to Data Structures
-• CPS 210: Computer Organization and Communications
-• CPS 240: Object-Oriented Programming, Analysis & Design
-• CPS 270: Computational Analysis and Simulation
-• CPS 360: Computer Design & Architecture
+* CPS 180: Principles of Computer Programming
+* CPS 181: Introduction to Data Structures
+* CPS 210: Computer Organization and Communications
+* CPS 240: Object-Oriented Programming, Analysis & Design
+* CPS 270: Computational Analysis and Simulation
+* CPS 360: Computer Design & Architecture
 TECHNICAL SKILLS
 Programming languages: Java, Python, Visual Basic, C, C++, JavaScript, TypeScript, SQL, HTML, CSS
 Environments: Eclipse, Visual Studio, Google Colab
