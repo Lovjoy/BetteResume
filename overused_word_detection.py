@@ -1,3 +1,4 @@
+# CONSOLIDATED
 # idea for this is that this scans for a specific thing, (eg: action verbs, skills, job description) and tells you if you overused it
 import spacy
 

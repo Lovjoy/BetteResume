@@ -3,7 +3,7 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-with open ("resume.txt", "r") as file:
+with open ("ray_resume.txt", "r") as file:
     resume_text = file.read().lower()
 
 doc = nlp(resume_text)
@@ -48,7 +48,7 @@ result_words = []
 # add a buffer since it catches extra word
 # END OF ACTION VERB DETECTION --------------------------------------
 
-
+'''
 # STAR DETECTION ----------------------------------------------------
 for token in doc:
     if token.pos_ == "VERB":
@@ -89,7 +89,7 @@ for sentence in sentences:
         print("Not enough STAR in your resume")
 
 # END OF STAR DETECTION --------------------------------------------
-
+'''
 
 # OVERUSED WORD DETECTION -------------------------------------------
 
@@ -145,7 +145,7 @@ for word, count in fluff_results.items():
 # END OF OVERUSED WORD DETECTION ---------------------------------------
 
 # LENGTH CHECK ---------------------------------------------------------
-with open ("resume.txt", "r") as file:
+with open ("ray_resume.txt", "r") as file:
     words = file.read().split()
 
 words_count = len(words)
@@ -163,10 +163,10 @@ else:
 
 # BULLET POINT CHECK ----------------------------------------------------
 
-with open ("resume.txt", "r") as file:
+with open ("ray_resume.txt", "r") as file:
     lines = file.read().split("\n")
     
-bullet_points = ["•", "•", "·", "⊛", "◉", "◉", "○", "◌", "-", "*"]
+bullet_pattern = r"^[o•·⊛◉○◌\-*]\s+"
 
 bullet_points_results = {}
 bullet_lengths = []
@@ -174,8 +174,7 @@ bullet_lengths = []
 for line in lines:
     line = line.strip()
 
-    if line.startswith(tuple(bullet_points)):
-
+    if re.match(bullet_pattern, line):
         bullet_symbol = line[0]
         bullet_points_results[bullet_symbol] = bullet_points_results.get(bullet_symbol, 0) + 1
 
@@ -190,20 +189,13 @@ if len(bullet_lengths) > 0:
 else:
     average_length = 0
 
-
-print("Bullet Point Scan Results")
-print("---------------------------")
-
-for bullet_points_kind, bullet_points_count in bullet_points_results.items():
-    print(f"{bullet_points_kind}: {bullet_points_count}")
-
 print("-----------------")
 print(f"Total Bullet Points found: {total_bullet_points}")
 
 if total_bullet_points >= 18:
     print("Too many bullet points, lessen them")
 elif total_bullet_points>= 12:
-    print("Optimal number of bullet points")
+    print("Optimal number of bullet points!")
 else:
     print("Not enough bullet points")
 
@@ -214,9 +206,10 @@ print("Average words per bullet: ", round(average_length, 2))
 if average_length >= 20:
     print("Length is too long, minimize them")
 elif total_bullet_points>= 10:
-    print("Optimal length of bullet point statements")
+    print("Optimal length of bullet point statements!")
 else:
     print("Too short, elaborate a little more!")
+
 
 # END OF BULLET POINT CHECK -----------------------------------------
 
