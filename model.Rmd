@@ -42,6 +42,7 @@ filter(X.job_position_name %in% c(
   )
 ```
 
+Use association rule mining to find words that are more likely to appear of better matching resumes.
 
 Skills with high lift
 ```{r}
