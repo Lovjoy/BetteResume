@@ -1,0 +1,50 @@
+DIANA LEDESMA
+(989)572-6969 | d005ledesma@gmail.com | www.linkedin.com/in/diana-ledesma-dcl
+EDUCATION
+Central Michigan University, Mount Pleasant, MI Anticipated Graduation: May 2028
+Bachelor of Science in Computer Science
+GPA: 3.7
+RELEVANT COURSEWORK
+• CPS 180: Principles of Computer Programming
+• CPS 181: Introduction to Data Structures
+• CPS 210: Computer Organization and Communications
+• CPS 240: Object-Oriented Programming, Analysis & Design
+• CPS 270: Computational Analysis and Simulation
+• CPS 360: Computer Design & Architecture
+TECHNICAL SKILLS
+Programming languages: Java, Python, Visual Basic, C, C++, JavaScript, TypeScript, SQL, HTML, CSS
+Environments: Eclipse, Visual Studio, Google Colab
+Software Platforms: GitHub, Google Workspace, Microsoft Suite, Adobe Creative Cloud, ScrimmageSIM
+
+EXPERIENCE
+MWC3 Collegiate Computing Conference 2025, Grand Rapids, MI March 2025
+• Earned Honorable Mention for learning and applying ScrimmageSIM ERP software within one hour of introduction.
+• Built a fully functional mini-arcade machine from the ground up and deployed multiple games in under two hours.
+2025 SpartaHack Hackathon, East Lansing, MI February 2025
+• Collaborated in a team of three to design a task management website application using Java, Python, HTML, and CSS.
+• Managed full-stack development in Visual Studio and Eclipse; resolved integration issues via GitHub Copilot.
+• Integrated AI models (ChatGPT, Gemini) to auto-generate and schedule tasks based on user input.
+• Delivered a functional prototype within 18 hours, showcasing AI-driven task automation and an intuitive user interface.
+L’Oreal Brandstorm 2025, Online January 2025
+• Worked with a team of three to develop a business proposal for a mobile application supporting L’Oreal’s Consumer
+Products Division.
+• Designed the app’s interface and branding using Adobe Express, Illustrator, and Photoshop.
+
+ADDITIONAL EXPERIENCE
+Division of University Engagement and Student Affairs, Mount Pleasant, MI March 2025
+Student Office Assistant
+• Designed social media posts using Adobe Express, Illustrator, and Photoshop, reaching a weekly visibility of 700+ users.
+• Created and allocated 20+ tasks to office staff using TeamDynamix, contributing to 83% of all tickets created.
+• Composed subscriber databases for office emails using LISTSERV, totalling to 1200+ students and faculty.
+• Conducted interviews and authored newsletter features spotlighting campus faculty, organizations, and students,
+reaching 100+ regular readers.
+CAMPUS INVOLVEMENT
+Women in Technology, Mount Pleasant, MI August 2025
+Treasurer
+• Created semester budget, expenses sheet, and fundraising plans using Google Sheets.
+• Coordinated reimbursement filing and documentation using Google Docs.
+• Mentored junior member, assisted with concerns on classes, career paths, and homework assignments.
+HONORS AND RECOGNITION
+Student Ambassador – Adobe July 2025
+Honorable Mention – MWC3 Enterprise Resource Planning with ScrimmageSIM March 2025
+Centralis Scholar Award – Honors Program February 2024
