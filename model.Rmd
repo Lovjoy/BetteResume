@@ -6,32 +6,44 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, labels = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
+
+Load libraries for association rule mining
 ```{r}
 library(arules)
 library(arulesViz)
 library(arulesCBA)
 library(tidyverse)
-resumes <- read.csv("resume_data.csv")
+resumes <- read.csv("resume_data.csv") #kaggle
 ```
 
+
+Subset data and bin matching score
 ```{r}
 head(resumes)
 resumes_short <- resumes %>%
   select(c("skills", "major_field_of_studies", "related_skils_in_job", "positions", "responsibilities", "X.job_position_name", "extra_curricular_activity_types", "certification_skills", "matched_score")) %>%
-  filter(X.job_position_name == 
-           c("Senior Software Engineer", "Machine Learning (ML) Engineer", 
-             "Senior iOS Engineer", "AI Engineer", "Database Administrator (DBA)", 
-             "Network Support Engineer", "DevOps Engineer", "Data Engineer", 
-             "Full Stack Developer (Python,React js)", "Data Science Engineer"))
-
-
-resumes_short$score_bin <- discretize(resumes_short$matched_score,method="interval",breaks=10)
+filter(X.job_position_name %in% c(
+  "Senior Software Engineer",
+  "Machine Learning (ML) Engineer",
+  "Senior iOS Engineer",
+  "AI Engineer",
+  "Database Administrator (DBA)",
+  "Network Support Engineer",
+  "DevOps Engineer",
+  "Data Engineer",
+  "Full Stack Developer (Python,React js)",
+  "Data Science Engineer"
+)) %>%
+  mutate(
+  score_bin = discretize(matched_score, method="interval", breaks=10)
+  )
 ```
 
 
+Skills with high lift
 ```{r}
 # Keep only needed columns
 resumes_skills <- resumes_short %>%
@@ -56,7 +68,6 @@ trans <- as(word_list, "transactions")
 ```
 
 
-
 ```{r}
 bins <- unique(paste0("score_bin=", resumes_skills$score_bin))
 
@@ -64,7 +75,7 @@ rhs_item <- names(sort(itemFrequency(trans)[bins], decreasing = TRUE))[1:2]
 
 rules <- apriori(
   trans,
-  parameter = list(sup = 0.01, conf = 0.60, minlen = 2),
+  parameter = list(sup = 0.005, conf = 0.60, minlen = 2),
   appearance = list(default = "lhs", rhs = rhs_item),
   control = list(verbose = FALSE)
 )
@@ -73,8 +84,13 @@ length(rules)
 inspect(head(sort(rules, by="support"), 20))
 ```
 
+```{r}
+rules_f <- subset(rules, subset = lift < 1)
+inspect(head(sort(rules_f, by="lift", decreasing=FALSE), 5))
+```
 
 
+Job skills with high lift
 ```{r}
 # Keep only needed columns
 resumes_job_skills <- resumes_short %>%
@@ -108,7 +124,7 @@ rhs_item <- names(sort(itemFrequency(trans)[bins], decreasing = TRUE))[1:2]
 
 rules <- apriori(
   trans,
-  parameter = list(sup = 0.01, conf = 0.60, minlen = 2),
+  parameter = list(sup = 0.005, conf = 0.60, minlen = 2),
   appearance = list(default = "lhs", rhs = rhs_item),
   control = list(verbose = FALSE)
 )
@@ -117,8 +133,12 @@ length(rules)
 inspect(head(rules, 20))
 ```
 
+```{r}
+rules_f <- subset(rules, subset = lift < 1)
+inspect(head(sort(rules_f, by="lift", decreasing=FALSE), 5))
+```
 
-
+Responsibilities with high lift
 ```{r}
 # Keep only needed columns
 resumes_responsibilities <- resumes_short %>%
@@ -162,9 +182,13 @@ length(rules)
 inspect(head(rules, 20))
 ```
 
+```{r}
+rules_f <- subset(rules, subset = lift < 1)
+inspect(head(sort(rules_f, by="lift", decreasing=FALSE), 5))
+```
 
 
-
+Major field of studies with highest lift
 ```{r}
 # Keep only needed columns
 resumes_field <- resumes_short %>%
@@ -209,6 +233,12 @@ inspect(head(rules, 20))
 ```
 
 ```{r}
+rules_f <- subset(rules, subset = lift < 1)
+inspect(head(sort(rules_f, by="lift", decreasing=FALSE), 5))
+```
+
+Previous positions with high lift
+```{r}
 # Keep only needed columns
 resumes_positions <- resumes_short %>%
   select(positions, score_bin)
@@ -250,3 +280,12 @@ rules <- apriori(
 length(rules)
 inspect(head(rules, 20))
 ```
+
+```{r}
+rules_f <- subset(rules, subset = lift < 1)
+inspect(head(sort(rules_f, by="lift", decreasing=FALSE), 5))
+```
+
+
+
+
