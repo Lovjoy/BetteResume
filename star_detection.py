@@ -3,15 +3,15 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-situation_words = {
+situation_words = [
     "when", "while", "during", "at the time", 
     "faced", "encountered", "challenging", 
     "problem", "issue", "obstacle", "difficulty",
     "due to", "because", "under", "amidst", "in response to"
-}
-task_words = {}
-action_verbs = {}
-result_words = {}
+]
+task_words = []
+action_verbs =[]
+result_words = []
 
 with open ("resume.txt", "r") as file:
     resume_text = file.read().lower()
