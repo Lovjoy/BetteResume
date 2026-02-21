@@ -1,0 +1,55 @@
+Jordan Patel
+(555) 987-1122
+jordan.patel@email.com
+Lansing, MI
+github.com/jpatel
+
+---
+
+Summary
+Computer Science graduate seeking an entry-level software development role. Experience with programming coursework, small academic projects, and collaborative assignments. Interested in backend development and improving practical coding skills in a professional environment.
+
+---
+
+Technical Skills
+Languages: Java, Python, C++
+Web: HTML, CSS, basic JavaScript
+Tools: Git, VS Code, Eclipse
+Databases: MySQL (introductory level)
+Other: Object-oriented programming, basic data structures
+
+---
+
+Projects
+Student Course Registration System (Java)
+• Developed a console-based application allowing users to add, drop, and view courses.
+• Implemented basic object-oriented design principles.
+• Stored course data using simple file I/O.
+
+Personal Portfolio Website
+• Designed a multi-page website using HTML and CSS.
+• Deployed using GitHub Pages.
+
+---
+
+Experience
+Technology Support Assistant
+University IT Department
+2023 – 2024
+
+• Assisted students with account access and password resets.
+• Provided basic troubleshooting for laptops and campus software.
+• Documented common technical issues for internal reference.
+
+---
+
+Education
+Bachelor of Science in Computer Science
+Michigan State University
+2024
+
+---
+
+Activities
+• Member, Programming Club
+• Participated in one campus hackathon

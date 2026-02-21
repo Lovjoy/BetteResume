@@ -3,7 +3,7 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-with open ("bad_resume.txt", "r") as file:
+with open ("resume.txt", "r") as file:
     resume_text = file.read().lower()
 
 doc = nlp(resume_text)
@@ -36,61 +36,6 @@ print("-----------------------------------------------------------------------")
 
 # add a buffer since it catches extra word
 # END OF ACTION VERB DETECTION --------------------------------------
-
-'''
-# STAR DETECTION ----------------------------------------------------
-
-
-situation_words = [
-    "when", "while", "during", "at the time", 
-    "faced", "encountered", "challenging", 
-    "problem", "issue", "obstacle", "difficulty",
-    "due to", "because", "under", "amidst", "in response to"
-]
-task_words = []
-action_verbs =[]
-result_words = []
-
-for token in doc:
-    if token.pos_ == "VERB":
-        task_words.append(token.text)
-    elif token.pos == "VERB":
-        action_verbs.append(token.text)
-    elif token.pos == "VERB":
-        result_words.append(token.text)
-
-sentences = re.split('[.!?]', resume_text)
-
-star_score = 0
-
-for sentence in sentences:
-    sentence = sentence.strip()
-
-    if len(sentence) == 0:
-        continue
-
-    has_s = any(word in sentence for word in situation_words)
-    has_t = any(word in sentence for word in task_words)
-    has_a = any(word in sentence for word in action_verbs)
-    has_r = any(word in sentence for word in result_words)
-
-    if has_s and has_t and has_a and has_r:
-        star_score += 5
-    elif has_s and has_t:
-        star_score += 3
-    elif has_t and has_a:
-        star_score += 3
-    elif has_a and has_r:
-        star_score += 3
-    elif has_s and has_r:
-        star_score += 3
-    elif has_s or has_t or has_a or has_r:
-        star_score +=2
-    else:
-        print("Not enough STAR in your resume")
-
-# END OF STAR DETECTION --------------------------------------------
-'''
 
 # OVERUSED WORD DETECTION -------------------------------------------
 
@@ -133,22 +78,21 @@ for verb, count in action_verb_results.items():
     if count >= 3:
         print("⚠️ You've used the word \"", verb, "\" too many times")
     
-
 for word, count in personality_results.items():
     if count >= 3:
         print("⚠️ You've used the word \"", verb, "\" too many times")
-
+    
 for word, count in fluff_results.items():
     if count >= 3:
         print("⚠️ You've used the word \"", verb, "\" too many times")
-
+    
 print("-----------------------------------------------------------------------")
 
 
 # END OF OVERUSED WORD DETECTION ---------------------------------------
 
 # LENGTH CHECK ---------------------------------------------------------
-with open ("bad_resume.txt", "r") as file:
+with open ("resume.txt", "r") as file:
     words = file.read().split()
 
 words_count = len(words)
@@ -169,11 +113,12 @@ print("-----------------------------------------------------------------------")
 # END OF LENGTH CHECK ---------------------------------------------------
 
 # BULLET POINT CHECK ----------------------------------------------------
+import re
 
-with open ("bad_resume.txt", "r") as file:
+with open ("resume.txt", "r") as file:
     lines = file.read().split("\n")
-    
-bullet_pattern = r"^[o•·⊛◉○◌\-*]\s+"
+
+bullet_pattern = r"^[\s]*([•·⊛◉○◌\-*o])\s+"
 
 bullet_points_results = {}
 bullet_lengths = []
@@ -181,20 +126,17 @@ bullet_lengths = []
 for line in lines:
     line = line.strip()
 
-    if re.match(bullet_pattern, line):
-        bullet_symbol = line[0]
+    match = re.match(bullet_pattern, line)
+
+    if match:
+        bullet_symbol = match.group(1)
         bullet_points_results[bullet_symbol] = bullet_points_results.get(bullet_symbol, 0) + 1
 
-        clean_line = line[1:].strip()
+        clean_line = line[match.end():].strip()
         word_count = len(clean_line.split())
         bullet_lengths.append(word_count)
 
 total_bullet_points = sum(bullet_points_results.values())
-
-if len(bullet_lengths) > 0:
-    average_length = sum(bullet_lengths) / len(bullet_lengths)
-else:
-    average_length = 0
 
 print("Bullet Point Check Results:")
 print("-----------------------------------------------------------------------")
@@ -203,21 +145,27 @@ print(f"Total Bullet Points found: {total_bullet_points}")
 
 if total_bullet_points >= 18:
     print("Too many bullet points, lessen them")
-elif total_bullet_points>= 12:
+elif total_bullet_points >= 12:
     print("Optimal number of bullet points!")
-else:
+elif total_bullet_points > 0:
     print("Not enough bullet points")
-
-
-print("Average words per bullet: ", round(average_length, 2))
-
-if average_length >= 20:
-    print("Length is too long, minimize them")
-elif total_bullet_points>= 10:
-    print("Optimal length of bullet point statements!")
 else:
-    print("Too short, elaborate a little more!")
+    print("No bullet points found")
 
+# ---- Average Length ----
+
+if total_bullet_points > 0:
+    average_length = sum(bullet_lengths) / total_bullet_points
+    print("Average words per bullet:", round(average_length, 2))
+
+    if average_length >= 20:
+        print("Length is too long, minimize them")
+    elif average_length >= 12:
+        print("Optimal length of bullet point statements!")
+    else:
+        print("Too short, elaborate a little more!")
+else:
+    print("No bullet points found, cannot calculate length.")
 print("-----------------------------------------------------------------------")
 
 # END OF BULLET POINT CHECK -----------------------------------------
@@ -376,7 +324,6 @@ total_buzzwords = sum(buzzwords_results.values())
 print("Buzzword Scan Results")
 print("-----------------------------------------------------------------------")
 
-print("-----------------")
 print(f"Total Buzzwords found: {total_buzzwords}")
 
 if total_buzzwords >= 5:
@@ -397,24 +344,34 @@ print("-----------------------------------------------------------------------")
 numbers = re.findall(r"\d+", resume_text)
 score = 0
 
-signals = {'$', '%', '+', '#', "minutes", "hours", "days", "weeks", "months", "years", 
-           "increased", "reduced", "decreased", "improved", "grew", "boosted", "cut", "saved", "generated", "achieved", "delivered", "optimized",
-           "expanded", "scaled", "accelerated", "percent", "clients", "customers", "users", "employees", "team", "teams", "projects", "revenus",
-           "sales", "profit", "budget", "cost", "time"}
+signals = {
+    '$', '%', '+', '#',
+    "minutes", "hours", "days", "weeks", "months", "years",
+    "increased", "reduced", "decreased", "improved", "grew",
+    "boosted", "cut", "saved", "generated", "achieved",
+    "delivered", "optimized", "expanded", "scaled",
+    "accelerated", "percent", "clients", "customers",
+    "users", "employees", "team", "teams", "projects",
+    "revenue", "sales", "profit", "budget", "cost", "time"
+}
 
-for signals_kinds in signals:
-    if signals_kinds or numbers in resume_text:
+# Check signal words
+for signal in signals:
+    if signal in resume_text:
         score += 2
+
+# Check actual numbers
+score += len(numbers) * 3   # weight numbers heavier
 
 print("Quantification Strength Results:")
 print("-----------------------------------------------------------------------")
 
 if score >= 30:
-    print("Good job on quantifying! Your score is ", score)
-elif score >= 20:
-    print("Consider quantifying your impact/results more. Your score is ", score)
+    print("Good job on quantifying! Your score is", score)
+elif score >= 15:
+    print("Consider quantifying more. Your score is", score)
 else:
-    print("Quantification strengths weak! Your score is ", score)
+    print("Quantification strength weak! Your score is", score)
 
 print("-----------------------------------------------------------------------")
 # END OF QUANTIFICATION STRENGTH ANALYZER ----------------------------------------------
