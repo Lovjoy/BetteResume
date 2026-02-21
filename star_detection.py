@@ -1,4 +1,6 @@
-# this one is still unfinished
+# CONSOLIDATED
+# # this one is still unfinished
+
 import re
 import spacy
 
@@ -56,3 +58,5 @@ for sentence in sentences:
         star_score +=2
     else:
         print("Not enough STAR in your resume")
+
+

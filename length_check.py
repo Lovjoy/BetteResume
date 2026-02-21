@@ -1,3 +1,4 @@
+# CONSOLIDATED
 with open ("ray_resume.txt", "r") as file:
     words = file.read().split()
 
