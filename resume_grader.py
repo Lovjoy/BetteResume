@@ -3,7 +3,7 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-with open ("ray_resume.txt", "r") as file:
+with open ("bad_resume.txt", "r") as file:
     resume_text = file.read().lower()
 
 doc = nlp(resume_text)
@@ -19,20 +19,27 @@ for token in doc:
 total_action_verbs = len(action_verbs)
 
 print("Action Verb Scan Results")
-print("--------------------------")
+print("-----------------------------------------------------------------------")
 
+print(f"Total Action Verbs found: {total_action_verbs}")
 for verb in action_verbs:
     print("Action verbs found: ", verb)
 
-print("-----------------")
-print(f"Total Action Verbs found: {total_action_verbs}")
-
-if total_action_verbs >=15 :
+if total_action_verbs >= 40 :
     print("Buzzword score: Strong")
-elif total_action_verbs>=8 :
+elif total_action_verbs>= 20 :
     print("Buzzword score: Moderate")
 else:
     print("Buzzword score: Weak")
+
+print("-----------------------------------------------------------------------")
+
+# add a buffer since it catches extra word
+# END OF ACTION VERB DETECTION --------------------------------------
+
+'''
+# STAR DETECTION ----------------------------------------------------
+
 
 situation_words = [
     "when", "while", "during", "at the time", 
@@ -44,12 +51,6 @@ task_words = []
 action_verbs =[]
 result_words = []
 
-
-# add a buffer since it catches extra word
-# END OF ACTION VERB DETECTION --------------------------------------
-
-'''
-# STAR DETECTION ----------------------------------------------------
 for token in doc:
     if token.pos_ == "VERB":
         task_words.append(token.text)
@@ -126,7 +127,7 @@ for word in fluff_words:
     fluff_results[word] = count
 
 print("Overused Words Results")
-print("----------------------")
+print("-----------------------------------------------------------------------")
 
 for verb, count in action_verb_results.items():
     if count >= 3:
@@ -141,15 +142,19 @@ for word, count in fluff_results.items():
     if count >= 3:
         print("⚠️ You've used the word \"", verb, "\" too many times")
 
+print("-----------------------------------------------------------------------")
+
 
 # END OF OVERUSED WORD DETECTION ---------------------------------------
 
 # LENGTH CHECK ---------------------------------------------------------
-with open ("ray_resume.txt", "r") as file:
+with open ("bad_resume.txt", "r") as file:
     words = file.read().split()
 
 words_count = len(words)
 
+print("Length Check Results:")
+print("-----------------------------------------------------------------------")
 print("Total words: ", words_count)
 
 if words_count > 650:
@@ -159,11 +164,13 @@ elif words_count >= 400:
 else:
     print("Too short, consider adding more to your resume")
 
+print("-----------------------------------------------------------------------")
+
 # END OF LENGTH CHECK ---------------------------------------------------
 
 # BULLET POINT CHECK ----------------------------------------------------
 
-with open ("ray_resume.txt", "r") as file:
+with open ("bad_resume.txt", "r") as file:
     lines = file.read().split("\n")
     
 bullet_pattern = r"^[o•·⊛◉○◌\-*]\s+"
@@ -189,7 +196,9 @@ if len(bullet_lengths) > 0:
 else:
     average_length = 0
 
-print("-----------------")
+print("Bullet Point Check Results:")
+print("-----------------------------------------------------------------------")
+
 print(f"Total Bullet Points found: {total_bullet_points}")
 
 if total_bullet_points >= 18:
@@ -199,8 +208,7 @@ elif total_bullet_points>= 12:
 else:
     print("Not enough bullet points")
 
-print("Calculating average length of bullet points")
-print("--------------------------------------------")
+
 print("Average words per bullet: ", round(average_length, 2))
 
 if average_length >= 20:
@@ -210,6 +218,7 @@ elif total_bullet_points>= 10:
 else:
     print("Too short, elaborate a little more!")
 
+print("-----------------------------------------------------------------------")
 
 # END OF BULLET POINT CHECK -----------------------------------------
 
@@ -228,7 +237,7 @@ for structure_words in structure:
     structure_results[structure_words] = structure_words_count
 
 print("Structure Scan Results")
-print("----------------------")
+print("-----------------------------------------------------------------------")
 
 for structure_words, structure_words_count in structure_results.items():
     print(f"{structure_words}: {structure_words_count}")
@@ -236,6 +245,8 @@ for structure_words, structure_words_count in structure_results.items():
         print("Great, you've included your", structure_words)
     else:
         print("You haven't included your ", structure_words)
+
+print("-----------------------------------------------------------------------")
 
 # END OF STRUCTURE DETECTION CHECK ---------------------------------------
 
@@ -363,12 +374,7 @@ for buzzword_word in buzzwords:
 total_buzzwords = sum(buzzwords_results.values())
 
 print("Buzzword Scan Results")
-print("----------------------")
-
-'''
-for buzzword_word, buzzwords_count in buzzwords_results.items():
-    print(f"{buzzword_word}: {buzzwords_count}")
-'''
+print("-----------------------------------------------------------------------")
 
 print("-----------------")
 print(f"Total Buzzwords found: {total_buzzwords}")
@@ -380,6 +386,7 @@ elif total_buzzwords>= 3:
 else:
     print("Buzzword score: Weak")
 
+print("-----------------------------------------------------------------------")
 
 # END OF BUZZWORD SCANNER
 
@@ -400,7 +407,7 @@ for signals_kinds in signals:
         score += 2
 
 print("Quantification Strength Results:")
-print("---------------------------------")
+print("-----------------------------------------------------------------------")
 
 if score >= 30:
     print("Good job on quantifying! Your score is ", score)
@@ -409,7 +416,7 @@ elif score >= 20:
 else:
     print("Quantification strengths weak! Your score is ", score)
 
-
+print("-----------------------------------------------------------------------")
 # END OF QUANTIFICATION STRENGTH ANALYZER ----------------------------------------------
 
 
